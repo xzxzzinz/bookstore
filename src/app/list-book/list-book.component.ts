@@ -17,12 +17,17 @@ export class ListBookComponent implements OnInit {
   ngOnInit() {}
 
   public Getbook() {
-
+    // this.http
+    //   .get<bookmodel>("https://bookstore01.azurewebsites.net/api/BookStore/Get")
+    //   .subscribe(it => console.log(it));
 
     this.http
       .get<bookmodel[]>(
         "https://bookstore01.azurewebsites.net/api/BookStore/Get"
       )
       .subscribe(it => (this.books = it));
+
+
+      // jfjijijij
   }
 }
