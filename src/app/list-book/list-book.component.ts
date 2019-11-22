@@ -28,6 +28,6 @@ export class ListBookComponent implements OnInit {
       .subscribe(it => (this.books = it));
 
 
-      // jfjijijij
+
   }
 }
