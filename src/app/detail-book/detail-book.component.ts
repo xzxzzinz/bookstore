@@ -21,14 +21,15 @@ export class DetailBookComponent implements OnInit {
     //auto ทำงานเอง
   }
 
-
-
   ngOnInit() {
     // auto
     this.getbookbyid();
   }
 
   public getbookbyid() {
+    // this.http
+    //   .get<bookmodel>("https://bookstore01.azurewebsites.net/api/BookStore/Get")
+    //   .subscribe(it => console.log(it));
     this.http
       .get(`https://bookstore01.azurewebsites.net/api/BookStore/Get/${this.id}`)
       .subscribe(it => console.log(it));
