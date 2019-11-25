@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { bookmodel } from "../models/book-model";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-add-book",
@@ -9,22 +10,24 @@ import { bookmodel } from "../models/book-model";
 })
 export class AddBookComponent implements OnInit {
   public book: bookmodel = new bookmodel();
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, public router: Router) {}
 
   ngOnInit() {}
   public addbook() {
-    this.book.id = 48;
-    this.book.name = "BNK48";
-    this.book.prices = 480;
-    this.book.details = "ประวัติ Member Bnk48";
-    this.book.pic =
-      "https://f.ptcdn.info/189/056/000/p47qt3bsru2ECwJX7qW-o.png";
+    if (!confirm("Are you sure to Add This Book ?")) return;
 
     this.http
       .post(
         "https://bookstore01.azurewebsites.net/api/BookStore/Post",
         this.book
       )
-      .subscribe(it => console.log(it));
+      .subscribe(it => {
+        console.log(it);
+        this.router.navigateByUrl("/books");
+      });
+  }
+  public back() {
+    if(!confirm("Are you sure to Exit this form")) return;
+    this.router.navigateByUrl('/books');
   }
 }

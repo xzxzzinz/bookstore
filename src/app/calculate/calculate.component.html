@@ -1,0 +1,27 @@
+<div class="cel col col-md-12" style="background-color: #F2F2F2; padding: 5%;">
+    <div class="row ">
+        <div class="col col-md-4">
+
+            <p class="h6">Count</p>
+        </div>
+        <div class="col col-md-8">: {{count()}}</div>
+    </div>
+    <div class="row">
+        <div class="col col-md-4">
+
+            <p class="h6">Total Prices</p>
+        </div>
+        <div class="col col-md-8">: {{sumFunc()}}</div>
+    </div>
+    <div class="row">
+        <div class="col col-md-4">
+            <p class="h6">Vat 7% </p>
+
+        </div>
+        <div class="col col-md-8"> : {{vat()}}</div>
+    </div>
+    <div class="form-group col-md-12" style="padding: 0%; margin-top: 6%;">
+        <button class="form-control btn btn-success" (click)="addOrders()">
+          <i class="fa fa-shopping-cart"></i> Buy</button>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router"; //ไว้ดักเก็บparam
 import { HttpClient } from "@angular/common/http";
+import { bookmodel } from '../models/book-model';
 
 @Component({
   selector: "app-detail-book",
@@ -10,6 +11,7 @@ import { HttpClient } from "@angular/common/http";
 //class => functions
 export class DetailBookComponent implements OnInit {
   public id: string;
+  public book : bookmodel ;
 
   constructor(public routeractive: ActivatedRoute, public http: HttpClient) {
     this.routeractive.params.forEach(query => {
@@ -31,7 +33,7 @@ export class DetailBookComponent implements OnInit {
     //   .get<bookmodel>("https://bookstore01.azurewebsites.net/api/BookStore/Get")
     //   .subscribe(it => console.log(it));
     this.http
-      .get(`https://bookstore01.azurewebsites.net/api/BookStore/Get/${this.id}`)
-      .subscribe(it => console.log(it));
+      .get<bookmodel>(`https://bookstore01.azurewebsites.net/api/BookStore/Get/${this.id}`)
+      .subscribe(it => this.book = it) ;
   }
 }

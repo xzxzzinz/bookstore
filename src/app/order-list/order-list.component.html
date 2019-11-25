@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <table class="table table-striped custab my-custom-scrollbar table-wrapper-scroll-y">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col" style="width: 125px;">PIC</th>
+                    <th scope="col" style="width: 105px;">Name</th>
+                    <th scope="col" style="width: 105px;">Count</th>
+                    <th scope="col" style="width: 105px;">Total(P)</th>
+                    <th scope="col" style="width: 105px;"></th>
+                </tr>
+            </thead>
+
+            <tbody *ngIf="books.length > 0">
+                <tr *ngFor="let item of books; let i = index">
+                    <td><img src="{{item.pic}}" alt="" class="img-thumbnail" style="width: 100px; height: 100px;"></td>
+
+                    <td>{{item.name}}</td>
+                    <td>{{item.each}} ea</td>
+                    <td>{{sumCount(item)}} Bath</td>
+                    <td>
+                        <button class="btn btn-outline-secondary mx-1" type="button" (click)="delete(i)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <div *ngIf="books.length == 0">
+                <h5 class="my-5" style="text-align: center;">No Orders..</h5>
+            </div>
+        </table>
+    </div>
+</div>

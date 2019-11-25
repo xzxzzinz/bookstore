@@ -6,6 +6,8 @@ import { EditBookComponent } from "./edit-book/edit-book.component";
 import { AddBookComponent } from "./add-book/add-book.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
+import { GoodsSellComponent } from './goods-sell/goods-sell.component';
+import { ListSaleComponent } from './list-sale/list-sale.component';
 
 const routes: Routes = [
   {
@@ -19,17 +21,15 @@ const routes: Routes = [
     path: "books",
     children: [
       { path: "", component: ListBookComponent },
-      { path: ":id", component: DetailBookComponent }
+      { path: ":id", component: DetailBookComponent },
+
+      {path: "edit/:id" , component: EditBookComponent }
     ]
   },
-  {
-    path: "edit",
-    children: [
-      { path: ":id", component: EditBookComponent },
-      { path: "", component: ListBookComponent }
-    ]
-  },
-  { path: "create", component: AddBookComponent },
+
+  { path: "book/create", component: AddBookComponent },
+  { path: "sele", component: GoodsSellComponent },
+  { path: "historysale", component: ListSaleComponent },
 
   { path: "**", component: ListBookComponent },
   { path: "", component: ListBookComponent }

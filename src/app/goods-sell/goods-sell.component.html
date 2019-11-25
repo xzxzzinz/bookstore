@@ -1,0 +1,60 @@
+<div class="container-fluid my-2">
+    <div class="row col col-md-12">
+        <div class="col col-md-3"></div>
+        <div class="col col-md-9">
+            <div class="row my-2 ">
+                <div class="col "></div>
+                <div class="form-inline my-lg-0 ">
+                    <input class="form-control mr-sm-2 " type="search " placeholder="Search " aria-label="Search " [(ngModel)]="namesearch ">
+                    <button class="btn btn-outline-success my-2 my-sm-0 " type="submit" (click)="searchbook() ">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <app-order-list [books]="selebook" (clearCount)="clearCount($event)"></app-order-list>
+
+            <app-calculate [orders]="selebook" (ordersEmpty)="ordersReset($event)"></app-calculate>
+        </div>
+
+        <div class="col col-md-8">
+            <table class="table table-hover custab  my-custom-scrollbar table-wrapper-scroll-y ">
+                <thead class="thead-dark ">
+                    <tr>
+                        <th scope="col ">#</th>
+                        <th scope="col ">PIC</th>
+                        <th scope="col ">Name</th>
+                        <th scope="col ">Price</th>
+                        <th scope="col ">Count</th>
+                        <th scope="col "></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of books; let i= index ">
+                        <th scope="row ">{{i}}</th>
+                        <td><img src="{{item.pic}} " alt=" " class="img-thumbnail " style="width: 100px; height: 100px; "></td>
+
+                        <td>{{item.name}}</td>
+                        <td>{{item.prices}} Bath {{item.each}}</td>
+                        <td>{{celStock(item)}}</td>
+                        <td>
+                            <div class="row">
+                                <div class="input-group ">
+                                    <div class="input-group-prepend " id="button-addon4 ">
+                                        <button class="btn btn-outline-secondary " type="button " (click)="eachdecrease(item) ">-</button>
+
+                                    </div>
+                                    <input (change)="eachfix(item)" type="number " class="form-control col-md-2 mx-1 " placeholder=" " aria-label="Recipient 's username with two button addons" aria-describedby="button-addon4" [(ngModel)]="item.each">
+                                    <div class="input-group-append" id="button-addon4">
+                                        <button class="btn btn-outline-secondary" type="button" (click)="eachincease(item)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

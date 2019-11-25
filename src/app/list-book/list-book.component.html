@@ -1,11 +1,19 @@
 <div class="container my-2">
-    <table class="table">
+    <div class="row my-2">
+        <div class="col col-md-9"></div>
+        <div class="form-inline  my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="namesearch">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchbook()">Search</button>
+        </div>
+    </div>
+    <table class="table custab my-custom-scrollbar table-wrapper-scroll-y table-hover">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">PIC</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
+                <th scope="col">Count</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -17,10 +25,11 @@
                 <td><img src="{{item.pic}}" alt="" class="img-thumbnail" style="width: 100px; height: 100px;"></td>
 
                 <td>{{item.name}}</td>
-                <td>{{item.prices}}</td>
-                <td><button type="button" class="btn btn-outline-primary">Details</button>
-                    <button type="button" class="btn btn-outline-warning mx-1">Edit</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                <td>{{item.prices}} Bath</td>
+                <td>{{item.count}} ea</td>
+                <td><button type="button" class="btn btn-outline-primary" [routerLink]="[ '/books' , item.id]">Details</button>
+                    <button type="button" class="btn btn-outline-warning mx-1" [routerLink]="[ '/books/edit' , item.id]">Edit</button>
+                    <button type="button" class="btn btn-outline-danger" (click)="deletebook(item)">Delete</button>
                 </td>
             </tr>
 
