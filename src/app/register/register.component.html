@@ -1,1 +1,21 @@
-<p>register works!</p>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="https://www.logolynx.com/images/logolynx/40/4067d897e88269c3cbdb3622b07e506d.jpeg" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+
+        <input type="text" id="login" class="fadeIn second" [(ngModel)]="user.username" name="login" placeholder="username">
+        <input type="password" id="password" class="fadeIn third" [(ngModel)]="user.password" name="login" placeholder="password">
+        <input type="password" id="name" class="fadeIn third" [(ngModel)]="user.fristName" name="login" placeholder="fristName">
+        <input type="password" id="name" class="fadeIn third" [(ngModel)]="user.lastName" name="login" placeholder="lastName">
+        <input type="submit" class="fadeIn fourth" (click)="register()" value="Register" style="background-color: #C995C1;">
+
+
+
+    </div>
+</div>

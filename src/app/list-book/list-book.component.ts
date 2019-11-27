@@ -37,7 +37,7 @@ export class ListBookComponent implements OnInit {
       )
       .subscribe(it => {
         console.log(it);
-        this.router.navigateByUrl("");
+        this.Getbook()
       });
   }
 

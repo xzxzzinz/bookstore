@@ -6,36 +6,67 @@ import { EditBookComponent } from "./edit-book/edit-book.component";
 import { AddBookComponent } from "./add-book/add-book.component";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
-import { GoodsSellComponent } from './goods-sell/goods-sell.component';
-import { ListSaleComponent } from './list-sale/list-sale.component';
+import { GoodsSellComponent } from "./goods-sell/goods-sell.component";
+import { ListSaleComponent } from "./list-sale/list-sale.component";
+import { AuthenGuard } from "./guard/authen.guard";
+import { UnauthenGuard } from "./guard/unauthen.guard";
 
 const routes: Routes = [
+
+  // { path: "**", redirectTo: "books", pathMatch: 'full',
+  // canActivate: [AuthenGuard]},
+  { path: "", redirectTo: "books" , pathMatch: 'full'},
   {
     path: "account",
     children: [
-      { path: "login", component: LoginComponent },
-      { path: "register", component: RegisterComponent }
+      {
+        path: "login",
+        component: LoginComponent,
+        canActivate: [UnauthenGuard]
+      },
+      {
+        path: "register",
+        component: RegisterComponent,
+        canActivate: [UnauthenGuard]
+      }
     ]
   },
   {
     path: "books",
     children: [
-      { path: "", component: ListBookComponent },
-      { path: ":id", component: DetailBookComponent },
+      {
+        path: "",
+        component: ListBookComponent,
+        canActivate: [AuthenGuard]
+      },
+      {
+        path: ":id",
+        component: DetailBookComponent,
+        canActivate: [AuthenGuard]
+      },
 
-      {path: "edit/:id" , component: EditBookComponent }
+      {
+        path: "edit/:id",
+        component: EditBookComponent,
+        canActivate: [AuthenGuard]
+      }
     ]
   },
-
-  { path: "book/create", component: AddBookComponent },
-  { path: "sele", component: GoodsSellComponent },
-  { path: "historysale", component: ListSaleComponent },
-
-  { path: "**", component: ListBookComponent },
-  { path: "", component: ListBookComponent }
-
-  // www.book.com/books
-  //             /edit/12
+  {
+    path: "book/create",
+    component: AddBookComponent,
+    canActivate: [AuthenGuard]
+  },
+  {
+    path: "sele",
+    component: GoodsSellComponent,
+    canActivate: [AuthenGuard]
+  },
+  {
+    path: "historysale",
+    component: ListSaleComponent,
+    canActivate: [AuthenGuard]
+  }
 ];
 
 @NgModule({

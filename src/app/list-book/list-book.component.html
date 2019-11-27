@@ -29,7 +29,7 @@
                 <td>{{item.count}} ea</td>
                 <td><button type="button" class="btn btn-outline-primary" [routerLink]="[ '/books' , item.id]">Details</button>
                     <button type="button" class="btn btn-outline-warning mx-1" [routerLink]="[ '/books/edit' , item.id]">Edit</button>
-                    <button type="button" class="btn btn-outline-danger" (click)="deletebook(item)">Delete</button>
+                    <button type="button" class="btn btn-outline-danger" (click)="deletebook(item) ">Delete</button>
                 </td>
             </tr>
 
